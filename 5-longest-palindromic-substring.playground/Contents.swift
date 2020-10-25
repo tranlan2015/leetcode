@@ -26,30 +26,30 @@ func longestPalindrome(_ s: String) -> String {
   if s.count == 1 { return s }
   let array = Array(s)
 
-  var maxLenght = 0
+  var maxlength = 0
   var startIndex = 0
 
   for middleIndex in 0 ..< array.count - 1 {
-    let continuous = lenght(array: array, start: middleIndex, end: middleIndex + 1)
-    let mirror = lenght(array: array, start: middleIndex, end: middleIndex)
+    let continuous = length(array: array, start: middleIndex, end: middleIndex + 1)
+    let mirror = length(array: array, start: middleIndex, end: middleIndex)
 
-    if continuous >= mirror && continuous > maxLenght {
-      maxLenght = continuous
+    if continuous >= mirror && continuous > maxlength {
+      maxlength = continuous
       startIndex = middleIndex - continuous/2
-    } else if mirror > continuous && mirror > maxLenght {
-      maxLenght = mirror
+    } else if mirror > continuous && mirror > maxlength {
+      maxlength = mirror
       startIndex = middleIndex - mirror/2
     }
   }
 
   var result: String = ""
-  for i in startIndex ... startIndex + maxLenght {
+  for i in startIndex ... startIndex + maxlength {
       result += String(array[i])
   }
   return result
 }
 
-func lenght(array: [String.Element], start: Int, end: Int) -> Int {
+func length(array: [String.Element], start: Int, end: Int) -> Int {
   var startCp = start
   var endCp = end
   while array[startCp] == array[endCp] {
